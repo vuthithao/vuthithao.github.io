@@ -1,7 +1,7 @@
 # Site settings
 title: V'Blog
 SEOTitle: nO bRAin, n0 PaiN | V'Blog
-header-img: img/blog.jpg
+header-img: /img/blog.jpg
 email: vuthithao04081996@gmail.com
 description: "nO bRAin, n0 PaiN"
 keyword: "thao"

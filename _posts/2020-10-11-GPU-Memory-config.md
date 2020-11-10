@@ -3,7 +3,7 @@ layout: post
 title: Config GPU memory
 date: 2020-11-10
 author: V
-header-image: img/gpu.jpg
+header-image: /img/gpu.jpg
 catalog: true
 tags:
     - tensorflow 

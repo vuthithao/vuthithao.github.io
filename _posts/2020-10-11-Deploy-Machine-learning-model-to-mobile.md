@@ -4,7 +4,7 @@ title: Deploy machine learning models trên mobile và thiết bị nhúng
 subtitle: Tensorflow model
 date: 2020-11-10
 author: V
-header-image: img/iPhone12.jpg
+header-image: /img/iPhone12.jpg
 catalog: true
 tags:
     - tensorflow 
