@@ -23,7 +23,7 @@ tags:
 
 ### Bước 1+2: Chọn model và nén
 Các loại models có thể convert sang TFLite: [TF SaveModel](https://www.tensorflow.org/guide/saved_model), [Keras Prebuilt Model](https://www.tensorflow.org/guide/keras/sequential_model), [Concrete Function](https://www.tensorflow.org/guide/intro_to_graphs)
-![_config.yml]({{ site.baseurl }}/images/convert.png)
+![_config.yml](/img/convert.png)
 
 #### 1. TF SaveModel
 Tạo một model đơn giản sử dụng Tensorflow và lưu dưới dạng TF SaveModel - bao gồm trọng số và các phép tính toán, không cần build lại model bằng code mà vẫn sử dụng được. Dưới đây là ví dụ convert từ TF SaveModel sang TF Lite FlatBuffer.
@@ -137,6 +137,7 @@ tflite_convert --saved_model_dir mobilenet_saved_model --output_file mobilenet.t
 ```
 - `--output_file`: TF Lite model
 - `--saved_model_dir`: TF SaveModel
+
 ### Bước 4: Optimize sử dụng lượng tử hóa (quantization) (optional)
 
 Lượng tử hóa, từ full floating point sang float16 hoặc 8-bit integers
