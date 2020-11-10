@@ -1,6 +1,16 @@
 ---
 layout: post
 title: Config GPU memory
+date: 2020-11-10
+author: V
+header-image: img/gpu.jpg
+catalog: true
+tags:
+    - tensorflow 
+    - machine learning
+    - tensorflow lite
+    - keras
+    - GPU
 ---
 
 ## 1. Tensorflow

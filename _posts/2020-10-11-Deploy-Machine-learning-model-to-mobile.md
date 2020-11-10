@@ -1,6 +1,16 @@
 ---
 layout: post
 title: Deploy machine learning models trên mobile và thiết bị nhúng
+subtitle: Tensorflow model
+date: 2020-11-10
+author: V
+header-image: img/iPhone12.jpg
+catalog: true
+tags:
+    - tensorflow 
+    - machine learning
+    - tensorflow lite
+    - keras
 ---
 
 [Colab](https://colab.research.google.com/drive/1Duy_r8bqRVNkvOD6uhywCMeKB6hQCrDU?usp=sharing)

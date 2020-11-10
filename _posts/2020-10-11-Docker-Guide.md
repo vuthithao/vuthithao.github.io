@@ -1,6 +1,12 @@
 ---
 layout: post
 title: Docker Guide
+date: 2020-11-10
+author: V
+header-image: img/docker.png
+catalog: true
+tags:
+    - docker
 ---
 
 # Set up môi trường cho máy GPU
