@@ -3,7 +3,7 @@ layout: post
 title: Docker Guide
 date: 2020-11-10
 author: V
-header-image: /img/docker.png
+header-image: img/docker.png
 catalog: true
 tags:
     - docker
@@ -115,8 +115,8 @@ docker build -t image_name:latest .
 ```bash
 docker run --name <container name> -d -p <local-port>:<api-port> image_name:latest
 ```
-- <local-port>: port đầu ra thực tế trên server chạy docker
-- <api-port>: port đầu ra trong code (được định nghĩa trong `api.py`)
+- `<local-port>`: port đầu ra thực tế trên server chạy docker
+- `<api-port>`: port đầu ra trong code (được định nghĩa trong `api.py`)
 
 ###### Ví dụ:
 ```bash
