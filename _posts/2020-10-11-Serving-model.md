@@ -112,6 +112,7 @@ print('Eval accuracy percentage: {:.2f}'.format(eval_acc * 100))
 - Trọng số được lưu dưới dạng checkpoint `training/cp.ckpt`. Thực hiện `bước 1` (convert TF model về định dạng TF Savemodel)
 ##### build/load model
 ```python
+
 NUM_CLASSES = 10
 model = tf.keras.Sequential([
     tf.keras.layers.Conv2D(16, (3, 3), activation='relu', input_shape=(28, 28, 1)),
