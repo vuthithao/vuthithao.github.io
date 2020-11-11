@@ -143,11 +143,9 @@ model.load_weights(checkpoint_path)
 
 ##### SaveModel là định dạng lưu toàn bộ trọng số và các phép tính toán, nhờ vậy khi sử dụng không cần build lại model bằng code. Muốn lưu model sang dạng này cần biết tensor đầu vào và đầu ra mà chúng ta cần. Vậy, ta xem list tensor của model
 
-```python
-[n.name for n in tf.get_default_graph().as_graph_def().node]
-```
+
 output
-```bash
+```
 ['conv2d_input',
  'conv2d/kernel/Initializer/random_uniform/shape',
  'conv2d/kernel/Initializer/random_uniform/min',
