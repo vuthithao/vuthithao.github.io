@@ -71,7 +71,8 @@ python api.py
 ### Docker CPU
 
 ##### Bước 1: Tạo `Dockerfile`
-###### Ví dụ:
+
+###### Tạo file tên `Dockerfile` với nội dung:
 ```
 # Use an official Python runtime as a parent image
 FROM python:3.6.5

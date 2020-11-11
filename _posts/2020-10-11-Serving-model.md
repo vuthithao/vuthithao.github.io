@@ -123,7 +123,7 @@ eval_loss, eval_acc = model.evaluate(x_test,  y_test, verbose=1)
 print('Eval accuracy percentage: {:.2f}'.format(eval_acc * 100))
 ```
 - Trọng số được lưu dưới dạng checkpoint `training/cp.ckpt`. Thực hiện `bước 1` (convert TF model về định dạng TF Savemodel)
-##### build/load model
+##### Build/load model
 ```python
 NUM_CLASSES = 10
 model = tf.keras.Sequential([
@@ -139,13 +139,14 @@ model = tf.keras.Sequential([
 
 model.load_weights(checkpoint_path)
 ```
+
 ##### SaveModel là định dạng lưu toàn bộ trọng số và các phép tính toán, nhờ vậy khi sử dụng không cần build lại model bằng code. Muốn lưu model sang dạng này cần biết tensor đầu vào và đầu ra mà chúng ta cần. Vậy, ta xem list tensor của model
 
 ```python
 [n.name for n in tf.get_default_graph().as_graph_def().node]
 ```
 output
-```
+```bash
 ['conv2d_input',
  'conv2d/kernel/Initializer/random_uniform/shape',
  'conv2d/kernel/Initializer/random_uniform/min',

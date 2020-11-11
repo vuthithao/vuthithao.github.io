@@ -26,7 +26,7 @@ Các loại models có thể convert sang TFLite: [TF SaveModel](https://www.ten
 ![_config.yml](img/convert.png)
 
 #### 1. TF SaveModel
-Tạo một model đơn giản sử dụng Tensorflow và lưu dưới dạng TF SaveModel - bao gồm trọng số và các phép tính toán, không cần build lại model bằng code mà vẫn sử dụng được. Dưới đây là ví dụ convert từ TF SaveModel sang TF Lite FlatBuffer.
+Tạo một model đơn giản sử dụng Tensorflow và lưu dưới dạng TF SaveModel (- bao gồm trọng số và các phép tính toán, không cần build lại model bằng code mà vẫn sử dụng được). Dưới đây là ví dụ convert từ TF SaveModel sang TF Lite FlatBuffer.
 
 ```python
 # we will train 
@@ -56,6 +56,7 @@ with open('model.tflite', 'wb') as f:
   f.write(tflite_model)
 ```
 ##### Load model
+Để sử dụng model nén, ta đơn giản load lại model theo cách sau (python), nếu sử dụng ngôn ngữ khác như js, C++ bạn tìm code phù hợp.
 ```python
 import numpy as np
 import tensorflow as tf
@@ -87,7 +88,7 @@ print(output_data)
 ```
 Một ví dụ khác convert và sử dụng một model đơn giản [tại đây](https://colab.research.google.com/drive/17l1G-9mPjRmEXlAnf0JzBstOgNoDtK6c?usp=sharing)
 #### 2. Keras Prebuilt Model
-Convert pre-train tf.keras MobileNet sang TF Lite
+Dưới đây là ví dụ convert từ pre-train tf.keras MobileNet sang TF Lite FlatBuffer.
 ```python
 import numpy as np
 import tensorflow as tf
@@ -112,7 +113,7 @@ with open('kerasmodel.tflite', 'wb') as f:
 ```
 
 #### 3. Concrete Function
-Với tensorflow 2.0 model còn được lưu dưới dạng Concrete Function.
+Với tensorflow 2.0 model còn được lưu dưới dạng Concrete Function. Dưới đây là ví dụ convert từ  Concrete Function sang TF Lite FlatBuffer.
 
 ###### Ví dụ với keras MobileNet model
 ```python
@@ -169,7 +170,7 @@ converter.optimizations = [tf.lite.Optimize.DEFAULT]
 tflite_quantized_model = converter.convert()
 open("converted_model.tflite", "wb").write(tflite_quantized_model)
 ```
-
+### NOTE
 - Trong thực tế, nhiều TF model được lưu dưới dạng checkpoints, chúng ta cần đưa về dạng TF SaveModel, hoặc keras trước khi convert sang TF Lite
 - Một ví dụ chuyển đổi FaceNet từ TF model sang TF Lite model [tại đây](https://colab.research.google.com/drive/1VovEl0I671JG7ufg2PtfjwKdM8YEK353?usp=sharing) 
 - Sử dụng FaceNet TF Lite vào project phân loại [tại đây](http://gitlab.giaingay.io/vuthithao/face-classification)
