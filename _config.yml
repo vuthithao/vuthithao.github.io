@@ -11,7 +11,7 @@ github_repo: "https://github.com/vuthithao/vuthithao.github.io.git" # you code r
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Goals determine what you going to be!"
+sidebar-about-description: "Life is like riding a bicycle. To keep your balance, you must keep moving."
 sidebar-avatar: /img/thao_av.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
