@@ -33,18 +33,21 @@ Tạo một model đơn giản sử dụng Tensorflow và lưu dưới dạng TF
 import tensorflow as tf
 
 # Construct a basic TF model.
+
 root = tf.train.Checkpoint()
 root.v1 = tf.Variable(3.)
 root.v2 = tf.Variable(2.)
 root.f = tf.function(lambda x: root.v1 * root.v2 * x)
 
 # Save the model into temp directory
+
 export_dir = "/test_saved_model"
 input_data = tf.constant(1., shape=[1, 1])
 to_save = root.f.get_concrete_function(input_data)
 tf.saved_model.save(root, export_dir, to_save)
 
 # Convert the model into TF Lite.
+
 converter = tf.lite.TFLiteConverter.from_saved_model(export_dir)
 tflite_model = converter.convert()
 
@@ -58,14 +61,17 @@ import numpy as np
 import tensorflow as tf
 
 # Load the TFLite model and allocate tensors.
+
 interpreter = tf.lite.Interpreter(model_path="model.tflite")
 interpreter.allocate_tensors()
 
 # Get input and output tensors.
+
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # Test the model on random input data.
+
 input_shape = input_details[0]['shape']
 input_data = np.array(np.random.random_sample(input_shape), dtype=np.float32)
 interpreter.set_tensor(input_details[0]['index'], input_data)
@@ -74,11 +80,12 @@ interpreter.invoke()
 
 # The function `get_tensor()` returns a copy of the tensor data.
 # Use `tensor()` in order to get a pointer to the tensor.
+
 output_data = interpreter.get_tensor(output_details[0]['index'])
 print(output_data)
 
 ```
-Một ví dụ khác convert và sử dụng MobileNet [tại đây](https://colab.research.google.com/drive/17l1G-9mPjRmEXlAnf0JzBstOgNoDtK6c?usp=sharing)
+Một ví dụ khác convert và sử dụng một model đơn giản [tại đây](https://colab.research.google.com/drive/17l1G-9mPjRmEXlAnf0JzBstOgNoDtK6c?usp=sharing)
 #### 2. Keras Prebuilt Model
 Convert pre-train tf.keras MobileNet sang TF Lite
 ```python
@@ -87,42 +94,52 @@ import tensorflow as tf
 
 # Load the MobileNet keras model.
 # we will create tf.keras model by loading pretrained model on #imagenet dataset
+
 model = tf.keras.applications.MobileNetV2(
     weights="imagenet", input_shape=(224, 224, 3))
+
 # here we pretrained model no need use SaveModel 
 # here we will pass model directly to TFLiteConverter
+
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 tflite_model = converter.convert()
 
 #if you want to save the TF Lite model use below steps or else skip
 # Save the model.
+
 with open('kerasmodel.tflite', 'wb') as f:
   f.write(tflite_model)
 ```
-##### Load model giống như ở 1
+
 #### 3. Concrete Function
 Với tensorflow 2.0 model còn được lưu dưới dạng Concrete Function.
 
 ###### Ví dụ với keras MobileNet model
 ```python
 import tensorflow as tf
-# load mobilenet model of keras 
+# load mobilenet model of keras
+ 
 model = tf.keras.applications.MobileNetV2(weights="imagenet", input_shape=(224, 224, 3))
 ```
 ```python
 #get callable graph from model. 
+
 run_model = tf.function(lambda x: model(x))
+
 # to get the concrete function from callable graph 
+
 concrete_funct = run_model.get_concrete_function(tf.TensorSpec(model.inputs[0].shape, model.inputs[0].dtype))
 
 #convert concrete function into TF Lite model using TFLiteConverter
+
 converter =  tf.lite.TFLiteConverter.from_concrete_functions([concrete_funct])
 tflite_model = converter.convert()
+
 # Save the model.
+
 with open('tf2model.tflite', 'wb') as f:
   f.write(tflite_model)
 ```
-##### Load model giống như ở 1
 
 #### 4. Sử dụng command line
 ```bash
